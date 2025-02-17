@@ -24,7 +24,10 @@ const TodoList = () => {
       return;
     }
 
-    setTodos([{ id: crypto.randomUUID(), text: todoText, completed: false}, ...todos]);
+    setTodos([
+      { id: crypto.randomUUID(), text: todoText, completed: false },
+      ...todos,
+    ]);
 
     setTodoText("");
   };
@@ -40,12 +43,23 @@ const TodoList = () => {
           ...todo,
           completed: !todo.completed,
         };
-      } 
+      }
 
-        return todo;      
+      return todo;
     });
 
     setTodos(updatedTodos);
+  };
+
+  const handleDelete = (id) => {
+    const filteredTodos = todos.filter((todo) => {
+      if (todo.id === id) {
+        return false;
+      }
+      return true;
+    });
+
+    setTodos(filteredTodos);
   };
 
   return (
@@ -64,9 +78,13 @@ const TodoList = () => {
             >
               {text}
             </p>
-            <button onClick={() => handleToggleCompleted(id)}>
-              {completed ? "취소하기" : "확인하기"}{" "}
-            </button>
+            <div>
+              <button onClick={() => handleToggleCompleted(id)}>
+                {completed ? "취소하기" : "확인하기"}{" "}
+              </button>
+
+              <button onClick={() => handleDelete(id)}>삭제하기</button>
+            </div>
           </li>
         ))}
       </ul>
