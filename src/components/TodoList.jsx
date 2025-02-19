@@ -56,10 +56,12 @@ const TodoList = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={todoText} onChange={handleChangeTodoText} />
-        <button type="submit">제출하기</button>
-      </form>
+      <TodoItem 
+      handleSubmit={handleSubmit}
+       todoText={todoText}
+        handChangeTodoText={handleChangeTodoText}
+        />
+        
       <ul>
         {todos.map(({ id, text, completed }) => (
           <TodoItem key={id} 

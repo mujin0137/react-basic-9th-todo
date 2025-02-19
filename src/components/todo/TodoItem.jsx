@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 const TodoItem = ({
   completed,
   text,
@@ -27,3 +27,6 @@ const TodoItem = ({
 };
 
 export default TodoItem;
+
+
+
