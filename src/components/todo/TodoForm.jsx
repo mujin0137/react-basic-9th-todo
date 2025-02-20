@@ -6,3 +6,5 @@ const TodoForm = ({ handleSubmit, todoText, handleChangeTodoText }) => {
     </form>
   );
 };
+
+export default TodoForm

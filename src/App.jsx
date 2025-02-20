@@ -1,9 +1,10 @@
-import TodoList from "./components/TodoList";
+import TodoContainer from "./components/todo/TodoContainer";
+
 
 // src/App.jsx
 const App = () => {
   return <main className="main-center">
-    <TodoList />
+    <TodoContainer />
   </main>;
 };
 
