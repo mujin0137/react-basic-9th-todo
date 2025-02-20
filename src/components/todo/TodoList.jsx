@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, handleDelete, handleToggleCompleted }) => {
+const TodoList = ({ todos, deleteTodo, ToggleTodoCompleted }) => {
   console.log(todos);
   return (
     <ul>
@@ -9,8 +9,8 @@ const TodoList = ({ todos, handleDelete, handleToggleCompleted }) => {
           key={id}
           completed={completed}
           text={text}
-          handleDelete={handleDelete}
-          handleToggleCompleted={handleToggleCompleted}
+          deleteTodo={deleteTodo}
+          ToggleTodoCompleted={ToggleTodoCompleted}
           id={id}
         />
       ))}

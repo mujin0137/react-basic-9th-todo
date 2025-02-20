@@ -17,28 +17,12 @@ const SAMPLE_TODOS = [
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState(SAMPLE_TODOS);
-  const [todoText, setTodoText] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!todoText.trim()) {
-      return;
-    }
-
-    setTodos([
-      { id: crypto.randomUUID(), text: todoText, completed: false },
-      ...todos,
-    ]);
-
-    setTodoText("");
+  const addTodos = (text) => {
+    setTodos([{ id: crypto.randomUUID(), text, completed: false }, ...todos]);
   };
 
-  const handleChangeTodoText = (e) => {
-    setTodoText(e.target.value);
-  };
-
-  const handleToggleCompleted = (id) => {
+  const ToggleTodoCompleted = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id
@@ -51,21 +35,17 @@ const TodoContainer = () => {
     );
   };
 
-  const handleDelete = (id) => {
+  const deleteTodo = (id) => {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
 
   return (
     <div>
-      <TodoForm
-        handleSubmit={handleSubmit}
-        todoText={todoText}
-        handleChangeTodoText={handleChangeTodoText}
-      />
+      <TodoForm addTodos={addTodos} />
       <TodoList
         todos={todos}
-        handleToggleCompleted={handleToggleCompleted}
-        handleDelete={handleDelete}
+        ToggleTodoCompleted={ToggleTodoCompleted}
+        deleteTodo={deleteTodo}
       />
     </div>
   );
